@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <scp trust="true" password="POiuyt0^" localFile="C:\Users\CALVO Manuela\Desktop\cours\ING5\big_data\projet/target/DATATourisme-1.0-SNAPSHOT.jar" remoteToFile="m.calvo-ece@edge-1.au.adaltas.cloud:" verbose="true"></scp>
+</target>
+</project>
