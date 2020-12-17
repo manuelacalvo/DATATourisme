@@ -1,7 +1,15 @@
 package bigdata;
 
-public class App {
-    public static void main(String[] args) {
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.*;
+
+public class App extends HttpServlet {
+    /*public static void main(String[] args) {
         System.out.println("Hello world");
 
       /*  System.setProperty("jxbrowser.license.key", "1BNDHFSC1FXIGGJYF9F4KBZ8OK8WGKX1L98J37OSSMY7BEZR99ZCOKPLV0W0OQTHMDQHYH");
@@ -38,8 +46,36 @@ public class App {
             frame.setVisible(true);
 
             browser.navigation().loadUrl(addressBar.getText());
-        }); */
+        });
+    } */
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        resp.getWriter().print("Hello from Java!\n");
+
     }
 
+    public static void main(String[] args) throws Exception{
+        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+        context.addServlet(new ServletHolder(new App()),"/*");
+        server.start();
+        server.join();
+
+      /*  try (BufferedInputStream in = new BufferedInputStream(new URL("https://diffuseur.datatourisme.gouv.fr/webservice/d02edf6818f4f2348d9baf3dca344396/fad8f97d-fd0a-4cd5-8a4a-c00d968bc3f6").openStream());
+             FileOutputStream fileOutputStream = new FileOutputStream("flux-8827-202012120213.csv")) {
+            byte dataBuffer[] = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+                fileOutputStream.write(dataBuffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            // handle exception
+        } */
+       //  https://diffuseur.datatourisme.gouv.fr/webservice/d02edf6818f4f2348d9baf3dca344396/fad8f97d-fd0a-4cd5-8a4a-c00d968bc3f6
+    }
 
 }

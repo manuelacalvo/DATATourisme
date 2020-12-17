@@ -17,6 +17,7 @@
         <log4j2-version>2.13.3</log4j2-version>
     </properties>
 
+
     <dependencyManagement>
         <dependencies>
             <!-- Camel BOM -->
@@ -31,6 +32,16 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>7.6.0.v20120127</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
@@ -103,6 +114,17 @@
                 <version>3.6.0</version>
             </plugin>
 
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <appName>datatourisme</appName>
+                    <processTypes>
+                        <web>java -jar target/DATATourisme-1.0-SNAPSHOT.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
