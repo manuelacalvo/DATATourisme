@@ -24,12 +24,20 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class App extends HttpServlet {
    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         resp.getWriter().print("Hello from Java!\n");
 
     }
@@ -93,6 +101,9 @@ public class App extends HttpServlet {
             System.out.println(e);
             return null;
         }
+
+    
+
     }
     
     private static void copyRemoteToLocal(Session session, String from, String to, String fileName) throws JSchException, IOException {
@@ -436,6 +447,14 @@ public static List<String> getAllNames() throws Exception {
         
         
         List<String> categories = getAllCategories();
+        
+        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+        context.addServlet(new ServletHolder(new App()), "/*");
+        server.start();
+        server.join();
         
         }
 

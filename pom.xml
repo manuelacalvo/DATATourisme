@@ -132,42 +132,7 @@
                     </processTypes>
                 </configuration>
             </plugin>
-           <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>scp-to-remote</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <scp localFile="${project.basedir}/target/DATATourisme-1.0-SNAPSHOT.jar"
-                                     remoteToFile="m.calvo-ece@edge-1.au.adaltas.cloud:" verbose="true"
-                                     password="POiuyt0^" trust="true">
-                                </scp>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
 
-                <dependencies>
-                    <dependency>
-                        <groupId>com.jcraft</groupId>
-                        <artifactId>jsch</artifactId>
-                        <version>0.1.53</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>ant</groupId>
-                        <artifactId>ant-jsch</artifactId>
-                        <version>1.6.5</version>
-                    </dependency>
-
-                </dependencies>
-            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
