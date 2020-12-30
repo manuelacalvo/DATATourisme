@@ -4,6 +4,9 @@ package bigdata;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class POI {
     public String id;
     public String name;
@@ -15,7 +18,7 @@ public class POI {
     public String latitude;
     public String longitude;
 
-    
+
     public POI(String id, String name, List<String> type, String comment, String lastUpdate, String reduceMobilityAccess, Address address, String latitude, String longitude) {
     	this.id = id;
     	this.name = name;
@@ -41,7 +44,7 @@ public class POI {
             return str[0];
         } else return null;
     }
-    
+
     public String getType() {
     	return toStringArray(this.type);
     }

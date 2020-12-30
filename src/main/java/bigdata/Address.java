@@ -9,7 +9,7 @@ public class Address {
     public String toString() {
         return this.locality + "," + this.postalCode + "," + this.street;
     }
-    
+
     public Address(String locality, String postalCode, String street) {
     	this.locality = locality;
     	this.postalCode = postalCode;
