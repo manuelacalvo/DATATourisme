@@ -1,12 +1,8 @@
 package bigdata;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-
-@Entity
 public class POI {
     public String id;
     public String name;
@@ -20,16 +16,17 @@ public class POI {
 
 
     public POI(String id, String name, List<String> type, String comment, String lastUpdate, String reduceMobilityAccess, Address address, String latitude, String longitude) {
-    	this.id = id;
-    	this.name = name;
-    	this.type = type;
-    	this.comment = comment;
-    	this.lastUpdate = lastUpdate;
-    	this.reduceMobilityAccess = reduceMobilityAccess;
-    	this.address = address;
-    	this.latitude = latitude;
-    	this.longitude = longitude;
-    	}
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.comment = comment;
+        this.lastUpdate = lastUpdate;
+        this.reduceMobilityAccess = reduceMobilityAccess;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     @Override
     public String toString() {
         return this.id + "," + this.name + "," + toStringArray(this.type) + "," + this.comment + "," + this.lastUpdate + "," + this.reduceMobilityAccess
@@ -37,18 +34,13 @@ public class POI {
     }
 
     public String toStringArray(List<String> list) {
-        if (list != null && list.size()>0) {
+        if (list != null && list.size() > 0) {
             final String[] str = {""};
 
             list.forEach(current -> str[0] += current + "|");
             return str[0];
         } else return null;
     }
-
-    public String getType() {
-    	return toStringArray(this.type);
-    }
-
 }
 
 

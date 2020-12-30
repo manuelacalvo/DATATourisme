@@ -1,7 +1,7 @@
 package bigdata;
 
 public class Address {
-	public String locality;
+    public String locality;
     public String postalCode;
     public String street;
 
@@ -11,8 +11,8 @@ public class Address {
     }
 
     public Address(String locality, String postalCode, String street) {
-    	this.locality = locality;
-    	this.postalCode = postalCode;
-    	this.street = street;
+        this.locality = locality;
+        this.postalCode = postalCode;
+        this.street = street;
     }
 }

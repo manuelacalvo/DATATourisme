@@ -1,1 +1,4 @@
 bigdata\App.class
+bigdata\POI.class
+bigdata\Address.class
+bigdata\POIController.class
