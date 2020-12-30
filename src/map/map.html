@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
         <style type="text/css">
             #map{ /* la carte doit avoir une hauteur sinon elle n'apparaît pas */
-                height:550px;
+                height:400px;
             }
         </style>
         <title>Carte</title>
@@ -26,7 +26,6 @@
 
         <!-- Fichiers Javascript -->
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
-        
         <script type="text/javascript" src="C:\Users\Guilhem\Projet_BigData\DATATourisme\src\data\poi.js"></script>
         
         <!--Script du champs de recherche dynamique-->
@@ -126,78 +125,107 @@
 
         </script>
 
+        <script type="text/javascript">
         
+          //var csv is the CSV file with headers
+          function csvJSON(csv){
+          
+            var lines=csv.split("\n");
+
+          
+                        var result = [];
+          
+            var headers=lines[0].split(",");
+          
+            for(var i=1;i<lines.length;i++){
+            
+          	  var obj = {};
+          	  var currentline=lines[i].split(",");
+            
+          	  for(var j=0;j<headers.length;j++){
+          		  obj[headers[j]] = currentline[j];
+          	  }
+            
+          	  result.push(obj);
+            
+            }
+
+            //return result; //JavaScript object
+            return JSON.stringify(result); //JSON
+            }
+
+        </script>
+
         <!--Script de la carte-->
         <script type="text/javascript">
         
-            var form = document.querySelector("form");
-            var cat = "";
-            var categories = ["Sport et loisir","Culte","Culture","Commerce Local","Patin à glace"];
-            
-            autocomplete(document.getElementById("catInput"), categories);
-            // Affiche de toutes les données saisies ou choisies
-            form.addEventListener("submit", function (e) {
+          const fileUrl = 'C:\Users\Guilhem\Projet_BigData\DATATourisme\src\data\requestOutputJava.csv' // provide file location
 
-                cat = form.elements.catInput.value
-                changeMarkers(points); 
-                e.preventDefault(); // Annulation de l'envoi des données
-            });
-            // On initialise la latitude et la longitude de Paris (centre de la carte)
-            var lat = 48.852969;
-            var lon = 2.349903;
-            var macarte = L.map('map').setView([lat, lon], 11);
-            var markerGroup = L.layerGroup().addTo(macarte);
+          var form = document.querySelector("form");
+          var cat = "";
+          var categories = ["Sport et loisir","Culte","Culture","Commerce Local","Patin à glace"];
+          
+          autocomplete(document.getElementById("catInput"), categories);
+          // Affiche de toutes les données saisies ou choisies
+          form.addEventListener("submit", function (e) {
+              cat = form.elements.catInput.value
+              changeMarkers(points); 
+              e.preventDefault(); // Annulation de l'envoi des données
+          });
+          // On initialise la latitude et la longitude de Paris (centre de la carte)
+          var lat = 48.852969;
+          var lon = 2.349903;
+          var macarte = L.map('map').setView([lat, lon], 11);
+          var markerGroup = L.layerGroup().addTo(macarte);
 
-
-            // Fonction d'initialisation de la carte
-            function initMap() {
-            
-	            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                
-	        	    attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
-	        	    minZoom: 1,
-	        	    maxZoom: 20
-                }).addTo(macarte);
-                           	
-            }
-        
-            function changeMarkers(json){
-            
-                markerGroup.clearLayers();
-                for (poi in json) {
-                    if (cat == json[poi].fields.categorie1 || cat == json[poi].fields.categorie2 || cat == json[poi].fields.categorie3)
-                    {
-                    
-                    var marker = L.marker([json[poi].fields.latitude, json[poi].fields.longitude]).addTo(macarte);
-                    var html = '';
-                         if (json[poi].fields.nom) {
-                             html += '<b>' + json[poi].fields.nom + '</b></br>';
-                         }
-                         if (json[poi].fields.description) {
-                             html += 'Description :' + json[poi].fields.description + '</br>';
-                         }
-                         if (json[poi].fields.adresse) {
-                             html += 'Adresse : ' + json[poi].fields.adresse + '</br>';
-                         }
-                         if (json[poi].fields.categorie1) {
-                             html += 'Catégorie 1 : ' + json[poi].fields.categorie1 + '</br>';
-                         }
-                         if (json[poi].fields.categorie2) {
-                             html += 'Catégorie 2 : ' + json[poi].fields.categorie2 + '</br>';
-                         }
-                         if (json[poi].fields.categorie3) {
-                             html += 'Catégorie 3 : ' + json[poi].fields.categorie3 + '</br>';
-                         }
-                    marker.bindPopup(html);
-                    marker.addTo(markerGroup);
-                    }
-                
-                }   
-            }
-            window.onload = function(){
-	            initMap(); 
-            };
-
+          // Fonction d'initialisation de la carte
+          function initMap() {
+          
+	          L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+              
+	            attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+	            minZoom: 1,
+	            maxZoom: 20
+              }).addTo(macarte);
+                         	
+          }
+      
+          function changeMarkers(json){
+          
+              markerGroup.clearLayers();
+              for (poi in json) {
+                  if (cat == json[poi].fields.categorie1 || cat == json[poi].fields.categorie2 || cat == json[poi].fields.categorie3)
+                  {
+                  
+                  var marker = L.marker([json[poi].fields.latitude, json[poi].fields.longitude]).addTo(macarte);
+                  var html = '';
+                       if (json[poi].fields.nom) {
+                           html += '<b>' + json[poi].fields.nom + '</b></br>';
+                       }
+                       if (json[poi].fields.description) {
+                           html += 'Description :' + json[poi].fields.description + '</br>';
+                       }
+                       if (json[poi].fields.adresse) {
+                           html += 'Adresse : ' + json[poi].fields.adresse + '</br>';
+                       }
+                       if (json[poi].fields.categorie1) {
+                           html += 'Catégorie 1 : ' + json[poi].fields.categorie1 + '</br>';
+                       }
+                       if (json[poi].fields.categorie2) {
+                           html += 'Catégorie 2 : ' + json[poi].fields.categorie2 + '</br>';
+                       }
+                       if (json[poi].fields.categorie3) {
+                           html += 'Catégorie 3 : ' + json[poi].fields.categorie3 + '</br>';
+                       }
+                  marker.bindPopup(html);
+                  marker.addTo(markerGroup);
+                  }
+              
+              }   
+          }
+          window.onload = function(){
+	          initMap(); 
+          };
 
 
         

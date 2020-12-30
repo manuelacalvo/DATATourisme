@@ -1,0 +1,24 @@
++--------------------------------------------+----------------------------------------------------+
+|                    name                    |                        type                        |
++--------------------------------------------+----------------------------------------------------+
+| Square Louis XIII                          | ["Park","CulturalSite","ParkAndGarden","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Mercure Paris 19 Philharmonie La Villette  | ["Hotel","LodgingBusiness","Accommodation","Hotel","HotelTrade","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Arnaud Delmontel                           | ["LocalBusiness","BoutiqueOrLocalShop","PlaceOfInterest","PointOfInterest","Store","urn:resource",""] |
+| Bong 15eme                                 | ["FoodEstablishment","Restaurant","FoodEstablishment","PlaceOfInterest","PointOfInterest","Restaurant","urn:resource",""] |
+| Jardin des Deux N??thes                    | ["Park","CulturalSite","ParkAndGarden","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Grande Halle de la Villette                | ["LocalBusiness","ArtGalleryOrExhibitionGallery","PlaceOfInterest","PointOfInterest","SportsAndLeisurePlace","Store","urn:resource",""] |
+| Mus??e Curie                               | ["LocalBusiness","Museum","CulturalSite","Museum","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Timhotel Paris Gare de l'Est               | ["Hotel","LodgingBusiness","Accommodation","Hotel","HotelTrade","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Martine Lambert                            | ["FoodEstablishment","IceCreamShop","FoodEstablishment","IceCreamShop","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Paroisse de la Trinit??                    | ["CulturalSite","PlaceOfInterest","PointOfInterest","ReligiousSite","urn:resource",""] |
+| Galerie Mathgoth                           | ["CulturalSite","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Yen                                        | ["FoodEstablishment","Restaurant","FoodEstablishment","PlaceOfInterest","PointOfInterest","Restaurant","urn:resource",""] |
+| Id??al H??tel Design                       | ["Hotel","LodgingBusiness","Accommodation","Hotel","HotelTrade","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Espace Weleda                              | ["PlaceOfInterest","PointOfInterest","SportsAndLeisurePlace","urn:resource",""] |
+| Bistrot Paul Bert                          | ["FoodEstablishment","Winery","BistroOrWineBar","FoodEstablishment","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Caf?? des Deux Magots                      | ["FoodEstablishment","Restaurant","BrasserieOrTavern","FoodEstablishment","PlaceOfInterest","PointOfInterest","Restaurant","urn:resource",""] |
+| Camion ?? Pizzas                           | ["FastFoodRestaurant","FoodEstablishment","FastFoodRestaurant","FoodEstablishment","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Givenchy                                   | ["LocalBusiness","BoutiqueOrLocalShop","PlaceOfInterest","PointOfInterest","Store","urn:resource",""] |
+| Aux Enfants G??t??s                        | ["FoodEstablishment","Winery","BistroOrWineBar","FoodEstablishment","PlaceOfInterest","PointOfInterest","urn:resource",""] |
+| Jardin du Luxembourg                       | ["Park","CulturalSite","ParkAndGarden","PlaceOfInterest","PointOfInterest","urn:resource",""] |
++--------------------------------------------+----------------------------------------------------+
