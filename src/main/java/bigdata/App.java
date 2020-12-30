@@ -339,16 +339,6 @@ public static List<String> getAllNames() throws Exception {
     	return names;
     }
     
-    public static List<String> getAllNames(List<POI> pois){
-    	List<String> names = new ArrayList<String>();
-    	
-    	for (int i=0; i<pois.size(); i++) {
-    		names.add(pois.get(i).name);
-    	}
-    	
-    	return names;
-    }
-    
    
     
     private static List<POI> CsvToPoi(File source) throws IOException {
@@ -414,8 +404,36 @@ public static List<String> getAllNames() throws Exception {
         
         return pois;
     }
+    
+    public static List<POI> requestByCategory(String category) throws Exception{
+    	
+    	String request = "'use ece_2020_fall_app_1; select * from calvo_monnier_projet_data_orc where array_contains(type, \"" + category + "\") limit 20;'";
+    	String command = "hive --outputformat=csv2 -e " + request + " > requestOutputJava.csv";
+    	listFolderStructure("g.monnier-ece", "ysyt2sk8Ph", "edge-1.au.adaltas.cloud", 22, command );
+        System.out.println("Fin de connexion");
+        String host = "edge-1.au.adaltas.cloud";
+        String user = "g.monnier-ece";
+        String keyPassword = "ysyt2sk8Ph";
         
+        String remote = "";
+        String local = "./src/data";
+        String fileName = "requestOutputJava.csv";
+   
+        int port = 22;
+
+        String keyFilePath = null;
+
+        Session session = createSession(user, host, port, keyFilePath, keyPassword);
         
+        copyRemoteToLocal(session, remote, local, fileName);
+        
+        File file = new File("./src/data/requestOutputJava.csv");
+        
+        List<POI> pois = CsvToPoi(file);
+        
+        return pois;
+    	
+    }        
         
     
     public static void main(String[] args) throws Exception{
@@ -447,8 +465,15 @@ public static List<String> getAllNames() throws Exception {
         
         
         List<String> categories = getAllCategories();
+    	
+    	List<POI> poisCat = requestByCategory("Winery");
+    	
+    	for (int i = 0; i<poisCat.size(); i++) {
+    		System.out.println(poisCat.get(i).toString());
+    	}
         
         Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+        //Server server = new Server(3000);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
