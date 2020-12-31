@@ -1,15 +1,7 @@
-Camel Router Spring Project
-===========================
+Ce projet est une API REST permettant d'executer des requêtes HIVE et de renvoyer leur résultat à la partie FRONT de l'application.
 
-To build this project use
+Pour lancer ce projet, il est nécessaire d’ouvrir la connexion openVPN sur l’ordinateur utilisé puis d'utiliser la commande maven 
 
-    mvn install
-
-To run this project with Maven use
-
-    mvn camel:run
-
-For more help see the Apache Camel documentation
-
-    http://camel.apache.org/
-
+'''
+mvn clean spring-boot:run.
+'''
