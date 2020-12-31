@@ -24,17 +24,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>7.6.0.v20120127</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>0.1.55</version>
@@ -59,77 +48,11 @@
     </dependencies>
 
     <build>
-        <!--  <defaultGoal>install</defaultGoal> -->
-
         <plugins>
-            <!--   <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-assembly-plugin</artifactId>
-                   <executions>
-                       <execution>
-                           <phase>package</phase>
-                           <goals>
-                               <goal>single</goal>
-                           </goals>
-                       </execution>
-                   </executions>
-                   <configuration>
-                       <archive>
-                           <manifest>
-                               <addClasspath>true</addClasspath>
-                               <mainClass>bigdata.App</mainClass>
-                           </manifest>
-                       </archive>
-                       <descriptorRefs>
-                           <descriptorRef>jar-with-dependencies</descriptorRef>
-                       </descriptorRefs>
-                       <appendAssemblyId>false</appendAssemblyId>
-                   </configuration>
-
-               </plugin>
-
-               <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-resources-plugin</artifactId>
-                   <version>3.2.0</version>
-                   <configuration>
-                       <encoding>UTF-8</encoding>
-                   </configuration>
-               </plugin>
-
-               <plugin>
-                   <groupId>org.apache.camel</groupId>
-                   <artifactId>camel-maven-plugin</artifactId>
-                   <version>3.6.0</version>
-               </plugin>
-
-
-               <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-compiler-plugin</artifactId>
-                   <configuration>
-                       <source>8</source>
-                       <target>8</target>
-                   </configuration>
-               </plugin>
-   -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>com.heroku.sdk</groupId>
-                <artifactId>heroku-maven-plugin</artifactId>
-                <version>3.0.3</version>
-                <configuration>
-                    <appName>datatourisme</appName>
-                    <processTypes>
-                        <web>java -jar target/DATATourisme-1.0-SNAPSHOT.jar</web>
-                    </processTypes>
-                </configuration>
-            </plugin>
-
         </plugins>
 
     </build>
