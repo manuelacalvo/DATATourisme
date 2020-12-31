@@ -2,6 +2,4 @@ Ce projet est une API REST permettant d'executer des requêtes HIVE et de renvoy
 
 Pour lancer ce projet, il est nécessaire d’ouvrir la connexion openVPN sur l’ordinateur utilisé puis d'utiliser la commande maven 
 
-'''
-mvn clean spring-boot:run.
-'''
+mvn clean spring-boot:run
